@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>4 2 etsy recreation</title>
+    <title>Etsy Recreation</title>
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
@@ -88,32 +88,39 @@
           </aside>
 
           <div class="col-md-10">
-            <div class="products-container">
-
-              <div class="row">
-                <!-- template city -->
+            <div class="row">
+              <div class="col-xs-12">
                 <h4>Top Categories for &lt;search term&gt;</h4>
-                <div class="col-md-3">
-
-                  <a href="#" class="product-card">
-                    <div class="card-body">
-                      <div class="product-img">
-                        <img src="" alt="">
-                      </div>
-                      <div class="product-info">
-                        <h6></h6>
-                        <span></span>
-                        <span></span>
-                      </div>
-                    </div>
-                  </a>
-
-                </div>
-                <!-- /template city -->
               </div>
-
             </div>
-          </div>
+            <div class="row">
+              <div id="products-container" class="products-container">
+                <!-- template city -->
+                <scirpt id="product-card-template" type="text/x-handlebars-template">
+
+                  <div class="col-md-3">
+
+                    <a href="#" class="product-card">
+                      <div class="card-body">
+                        <div class="product-img">
+                          <img src="{{itemImageUrl}}" alt="{{itemTitle}}">
+                        </div>
+                        <div class="product-info">
+                          <h6>{{itemTitle}}</h6>
+                          <span class="product-seller">{{sellerName}}</span>
+                          <span class="product-cost">{{productCost}}</span>
+                        </div>
+                      </div>
+                    </a>
+
+                  </div>
+
+                </scirpt>
+                <!-- /template city -->
+              </div> <!-- end .products-container -->
+
+            </div> <!-- end row -->
+          </div> <!-- end col-md-10 -->
 
         </div>
       </div>
