@@ -69,7 +69,7 @@ header,
     }
     a {
       line-height: 38px;
-      color: #767676;
+      color: #222222;
       &:hover {
         text-decoration: none;
       }
@@ -103,9 +103,29 @@ header,
 }
 
 .product-card {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 12px;
+  overflow: hidden;
+  h6 {
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   background-color: #ffffff;
+  color: #444444;
+  &:hover {
+    color: #444444;
+    text-decoration: none;
+  }
   .product-img {
-    height: 300px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #fafafa;
+    height: 256px;
+  }
+  .product-info {
+    padding: 5px;
   }
 }
 
