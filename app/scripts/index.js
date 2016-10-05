@@ -2,37 +2,35 @@ var $ = require('jquery');
 var _ = require('underscore');
 var handlebars = require('handlebars');
 
-
+// Etsy data point
 var url = "https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=yarn&includes=Images,Shop";
 
-function run(data){
+
+function displayProducts(products){
   var $target = $('#products-container'),
       $productImgs = $('.product-img'),
       $source = $('#product-card-template').html(),
       template = handlebars.compile($source),
-      products = data.results,
       context;
-  // console.log(products);
+
   products.forEach(function(product){
-   context = {
-      'itemImageUrl': product.Images[0].url_570xN,
-      'itemTitle': product.title,
-      'productSeller': product.Shop.shop_name,
-      'productCost': product.price
-    };
+    var productHTML = $(template(product));
+     context = {
+        'itemImageUrl': product.Images[0].url_570xN,
+        'itemTitle': product.title,
+        'productSeller': product.Shop.shop_name,
+        'productCost': product.price
+      };
 
     $target.append(template(context));
 
   });
+}
 
-  // $productImgs.each(function(){
-  //   $(this).css(
-  //       {'background-image' : context.itemImageUrl}
-  //     );
-  // });
+function run(data){
+  var products = data.results;
 
-  console.log($productImgs);
-
+  displayProducts(products);
 }
 
 
