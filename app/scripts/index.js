@@ -6,24 +6,32 @@ var handlebars = require('handlebars');
 var url = "https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=yarn&includes=Images,Shop";
 
 function run(data){
-  var $target = $('.products-container'),
+  var $target = $('#products-container'),
+      $productImgs = $('.product-img'),
       $source = $('#product-card-template').html(),
       template = handlebars.compile($source),
       products = data.results,
-      context,
-      html;
+      context;
   // console.log(products);
-
-  _.each(products, function(product){
+  products.forEach(function(product){
    context = {
       'itemImageUrl': product.Images[0].url_570xN,
       'itemTitle': product.title,
       'productSeller': product.Shop.shop_name,
       'productCost': product.price
     };
-    $target.html(template(context));
+
     $target.append(template(context));
+
   });
+
+  // $productImgs.each(function(){
+  //   $(this).css(
+  //       {'background-image' : context.itemImageUrl}
+  //     );
+  // });
+
+  console.log($productImgs);
 
 }
 
