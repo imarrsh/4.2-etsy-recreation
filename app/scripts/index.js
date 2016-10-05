@@ -3,8 +3,15 @@ var _ = require('underscore');
 var handlebars = require('handlebars');
 
 
+var url = "https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=yarn&includes=Images,Shop";
 
+function run(data){
+  console.log(data);
+}
 
+fetchJSONP(url, function(data) {
+  run(data);
+});
 
 
 // ##############################
