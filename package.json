@@ -22,16 +22,16 @@
     "jquery": "^2.2.0",
     "underscore": "^1.8.3"
     , "bootstrap-sass": "^3.3.6"
-    
+
     , "handlebars": "^4.0.5"
     , "hbsfy": "^2.5.1"
-    
-    
-    
+
+
+
   },
   "scripts": {
     "html": "cp app/*.html dist/",
-    "fonts": "cp -r app/fonts/* dist/fonts/",
+    "fonts": "cp -r app/fonts/ dist/fonts/",
     "scss": "sass --style compressed --update app/styles:dist/css",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*.css",
 
@@ -60,7 +60,7 @@
     "transform": [
       "browserify-shim",
       "hbsfy",
-      
+
       "strictify"
     ]
   },
