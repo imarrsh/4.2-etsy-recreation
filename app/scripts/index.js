@@ -19,7 +19,8 @@ function displayProducts(products){
         'itemImageUrl': product.Images[0].url_570xN,
         'itemTitle': product.title,
         'productSeller': product.Shop.shop_name,
-        'productCost': product.price
+        'productCost': product.price,
+        'currencyCode' : currencySymbol(product.currency_code)
       };
 
     $target.append(template(context));
@@ -27,9 +28,19 @@ function displayProducts(products){
   });
 }
 
+function currencySymbol(code){
+  switch(code){
+    case 'EUR':
+      return '\u20ac'; // Euro
+    case 'GBP':
+      return '\u00a3'; // Pound
+    default:
+      return '\u0024'; // Dollar
+  }
+}
+
 function run(data){
   var products = data.results;
-
   displayProducts(products);
 }
 

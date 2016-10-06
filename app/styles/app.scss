@@ -48,10 +48,96 @@ header,
   }
 }
 
-.search {
+#search {
+  position: relative;
   float: left;
+  width: 35%;
+  .search-container {
+    width: 100%;
+    display: table;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    .search-field-wrapper {
+      display: table-cell;
+      width: 100%;
+    }
+  }
+  form {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+    padding: 8px 15px 7px
+  }
+  input[type="text"] {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border: 1px solid #BCB7B3;
+    border-right: none;
+    background-color: #FBFBFA;
+    box-shadow: inset 0 0 10px -2px rgba(0, 0, 0, 0.1);
+    &:focus {
+      background-color: #ffffff;
+      border-color: #252525;
+      outline: none;
+    }
+  }
+  input[type="submit"]{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: white;
+    border: 1px solid #2F98B1;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #34A8C4;
+    &:focus {
+      outline: none;
+    }
+  }
 }
-.search form {
+
+.account-nav{
+  position: relative;
+  ul{
+    position: absolute;
+    right:20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  li {
+    display: inline-block;
+    margin-left: 10px;
+    a{
+      color: $etsyBlue;
+      padding: 10px;
+      display: block;
+      width: 100%;
+    }
+  }
+  i {
+    text-align: center;
+    margin-top: -10px;
+    font-size: 20px;
+    display: block;
+    color: #252525
+  }
+  .sign-in {
+    border: 1px solid lightblue;
+    border-radius: 3px;
+    &:hover {
+      background-color: transparentize($etsyBlue, .95);
+      a{
+        text-decoration: none;
+      }
+    }
+  }
+  .cart{
+    
+    &:hover a {
+      text-decoration: none;
+    }
+  }
 }
 
 #main-nav {
@@ -80,7 +166,6 @@ header,
 #main-content {
   background-color: #F5F5F1;
   padding: 20px 0;
-//
 }
 
 .panel {
@@ -92,7 +177,7 @@ header,
     padding: 0 0 10px 10px
   }
   a{
-    color: #0192B5;
+    color: $etsyBlue;
   }
 }
 
@@ -110,10 +195,14 @@ header,
   font-size: 12px;
   overflow: hidden;
   h6 {
+    margin-top: 0;
     font-weight: normal;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  span {
+    display: inline-block;
   }
   background-color: #ffffff;
   color: #444444;
@@ -129,7 +218,11 @@ header,
     background-position: top center;
   }
   .product-info {
-    padding: 5px;
+    padding: 10px;
+  }
+  .product-cost {
+    float: right;
+    color: #78C042;
   }
 }
 
