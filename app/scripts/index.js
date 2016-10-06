@@ -56,7 +56,7 @@ function displayProducts(products, searchTerm){
 
   // loop through products array, do stuff on each product
   products.forEach(function(product){
-    var productHTML = $(template(product));
+    // var productHTML = $(template(product));
     // providing context to the named variables in the template
      context = {
         'itemImageUrl': product.Images[0].url_570xN,
