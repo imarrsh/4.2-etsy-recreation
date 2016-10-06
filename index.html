@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Etsy Recreation</title>
+    <script src="https://use.fontawesome.com/cd8ada101a.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+
+  <div class="wrapper">
+
+    <header id="top">
+
+      <div class="container">
+        <div class="row">
+          <div class="xs-col-12">
+
+            <div id="etsy-logo" class="header-item-height">
+              <a href="https://etsy.com"></a>
+            </div>
+
+            <div id="search" class="header-item-height">
+              <form id="search-query" action="">
+                <div class="search-container">
+                  <div class="search-field-wrapper">
+                    <input id="search-term" type="text" placeholder="What are you looking for?">
+                  </div>
+                  <div class="search-field-wrapper">
+                    <input type="submit" name="search" value="Search">
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="account-nav header-item-height">
+                <ul>
+                  <li><a href="#">Sell on Etsy</a></li>
+                  <li><a href="#">Register</a></li>
+                  <li class="sign-in"><a href="#">Sign In</a></li>
+                  <li class="cart"><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart</a></li>
+                </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+    <nav id="main-nav">
+
+      <div class="container">
+        <div class="row">
+          <div class="xs-col-12">
+
+            <ul>
+              <li><a href="#">Clothing &amp; Accessories</a></li>
+              <li><a href="#">Jewelry</a></li>
+              <li><a href="#">Craft Supplies &amp; Tools</a></li>
+              <li><a href="#">Weddings</a></li>
+              <li><a href="#">Entertainment</a></li>
+              <li><a href="#">Home &amp; Living</a></li>
+              <li><a href="#">Kids &amp; Baby</a></li>
+              <li><a href="#">Vintage</a></li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </nav>
+
+    <section id="main-content">
+
+      <div class="container">
+        <div class="row">
+
+          <aside class="col-md-2 hidden-md hidden-sm hidden-xs">
+            <h5>Show Results For:</h5>
+            <div class="panel">
+              <h5>All Categories</h5>
+              <ul id="taxonomy_paths">
+              </ul>
+              <!-- taxonomy template -->
+              <script id="taxonomies" type="text/x-handlebars-template">
+                <li><a href="#">{{taxonomy_path}}</a></li>
+              </script>
+              <!-- taxonomy template -->
+            </div>
+            <!-- Refine search -->
+            <h5>Refine your search</h5>
+            <div class="panel">
+              <form action="#">
+                <h5>Shop Location</h5>
+                <label for="">
+                  <input type="radio" name="location" value="anywhere">
+                  Anywhere
+                </label>
+                <label for="">
+                  <input type="radio" name="location" value="usa">
+                  United States
+                </label>
+                <div><a href="#">Choose custom location</a></div>
+                <hr>
+                <h5>Item Type</h5>
+                <label for="">
+                  <input type="radio" name="itemType">
+                    All Items
+                  </label>
+                <label for="">
+                  <input type="radio" name="itemType">
+                    Handmade
+                  </label>
+                <label for="">
+                  <input type="radio" name="itemType">
+                    Vintage
+                </label>
+                <hr>
+                <h5>Price ($)</h5>
+                <input type="text" name="priceLow" value="" placeholder="Low"> to
+                <input type="text" name="priceHigh" placeholder="High">
+                <button><i class="fa fa-caret-right"></i></button>
+                <hr>
+                <h5>Filter by color</h5>
+                <div class="color-picker">
+                  <a href="#" class="swatch red"></a>
+                  <a href="#" class="swatch orange"></a>
+                  <a href="#" class="swatch yellow"></a>
+                  <a href="#" class="swatch green"></a>
+                  <a href="#" class="swatch cyan"></a>
+                  <a href="#" class="swatch purple"></a>
+                  <a href="#" class="swatch black"></a>
+                  <a href="#" class="swatch white"></a>
+                </div>
+                <hr>
+                <h5>Ordering Options</h5>
+                <label for="">
+                  <input type="checkbox" name="acceptsGiftCards" value="acceptsGiftCards">
+                  <a href="#">Accepts Etsy gift cards</a>
+                </label>
+                <label for="">
+                  <input type="checkbox" name="customizable" value="customizable">
+                  <a href="#">Customizable</a>
+                </label>
+                <hr>
+                <h5>Ship to</h5>
+                <select name="country">
+                  <option value="United States">United States</option>
+                  <option value="United States">United States</option>
+                  <option value="United States">United States</option>
+                  <option value="United States">United States</option>
+                  <option value="United States">United States</option>
+                </select>
+              </form>
+            </div>
+          </aside>
+
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-xs-12">
+                <h4 id="search-result-info"></h4>
+              </div>
+            </div>
+            <div class="row">
+              <div id="products-container" class="products-container">
+
+
+
+              </div> <!-- end .products-container -->
+              <!-- ############## -->
+              <!-- template city -->
+               <script id="product-card-template" type="text/x-handlebars-template">
+
+                 <div class="col-sm-3">
+
+                   <a href="{{url}}" class="product-card">
+
+                     <div class="card-body">
+                       <div class="product-img" style="background-image: url('{{itemImageUrl}}')">
+                         <!-- <img src="{{itemImageUrl}}" alt="{{itemTitle}}"> -->
+                       </div>
+                       <div class="product-info">
+                         <h6>{{itemTitle}}</h6>
+                         <span class="product-seller">{{productSeller}}</span>
+                         <span class="product-cost">{{currencyCode}}{{productCost}}</span>
+                       </div>
+                     </div>
+
+                   </a>
+
+                 </div>
+
+               </script >
+               <!-- /template city -->
+               <!-- ############## -->
+
+            </div> <!-- end row -->
+          </div> <!-- end col-md-10 -->
+
+        </div> <!-- end outer .row-->
+      </div> <!-- end /container -->
+
+    </section>
+
+    <footer>
+      <div class="row">
+        <div class="col-sm-2 col-md-offset-2">
+          <h5>Turn your passion into a business</h5>
+
+          <button>Open a shop</button>
+          <h5>Sell on Etsy</h5>
+
+          <ul>
+            <li><a href="#">Open a shop</a></li>
+            <li><a href="#">Seller Handbook</a></li>
+            <li><a href="#">Etsy credit card reader</a></li>
+            <li><a href="#">Manufacturing</a></li>
+
+          </ul>
+        </div>
+
+        <div class="col-sm-2">
+          <h5>Join the community</h5>
+          <ul>
+            <li><a href="#">Teams</a></li>
+            <li><a href="#">Forums</a></li>
+            <li><a href="#">Upcoming events</a></li>
+            <li><a href="#">Affiliates</a></li>
+            <li><a href="#">Etsy Local</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-2">
+          <h5>Discover and shop</h5>
+          <ul>
+            <li><a href="#">Gift cards</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Mobile apps</a></li>
+            <li><a href="#">Gift registries</a></li>
+            <li><a href="#">Wholesale</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Editors’ Picks</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-2">
+          <h5>Get to know us</h5>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Policies</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Investors</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-2">
+          <h5>Follow Etsy</h5>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Pinterest</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+
+    <script src="js/bundle.js"></script>
+  </body>
+</html>
