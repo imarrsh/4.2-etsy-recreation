@@ -183,6 +183,46 @@ header,
   a{
     color: $etsyBlue;
   }
+  form {
+    label {
+      font-weight: normal;
+      display: block;
+    }
+    input[type="text"] {
+      width: 70px;
+      padding: 5px;
+      border-radius: 3px;
+      border: 1px solid #999999;
+    }
+    button {
+      padding: 5px 10px;
+      border-radius: 3px;
+      border: 1px solid #999999;
+      background-color: #ffffff;
+    }
+    .swatch {
+      border-radius: 3px;
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border: 1px solid #E2E2E2;
+      &.red { background-color: red }
+      &.orange { background-color: orange; }
+      &.yellow { background-color: yellow; }
+      &.green { background-color: green; }
+      &.cyan { background-color: cyan; }
+      &.purple { background-color: purple; }
+      &.black { background-color: black; }
+      &.white { background-color: white; }
+    }
+    select {
+      border: 1px solid #E2E2E2;
+      border-radius: 3px;
+      width: 100%;
+      background-color: #ffffff;
+      padding: 8px;
+    }
+  }
 }
 
 .products-container {
