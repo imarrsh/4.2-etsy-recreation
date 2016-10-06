@@ -54,6 +54,7 @@ header,
   float: left;
   width: 35%;
   .search-container {
+    z-index: 10;
     width: 100%;
     display: table;
     position: absolute;
@@ -220,7 +221,12 @@ header,
       border-radius: 3px;
       width: 100%;
       background-color: #ffffff;
-      padding: 8px;
+      padding-left: 30px;
+      height: 40px;
+      box-shadow: 0 1px 2px -1px rgba(0,0,0, 0.1);
+      &:focus {
+        outline: none;
+      }
     }
   }
 }

@@ -1,26 +1,48 @@
 var $ = require('jquery');
 var _ = require('underscore');
-var handlebars = require('handlebars');
+var Handlebars = require('handlebars');
 
 // Etsy data point
-var url = "https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=yarn&includes=Images,Shop";
+// var keywords = 'yarn';
+var url = 'https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=yarn&includes=Images,Shop';
+
+$('#search-query').on('submit', function(e){
+  e.preventDefault();
+  var searchTerm = $('#search-term').val();
+  var newUrl = 'https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=';
+      newUrl += searchTerm;
+      newUrl += '&includes=Images,Shop';
+
+  fetchJSONP(newUrl, function(data) {
+    run(data);
+  });
+
+});
 
 
 function displayProducts(products){
+  // get html targets, set up template source and compile
   var $target = $('#products-container'),
       $productImgs = $('.product-img'),
       $source = $('#product-card-template').html(),
-      template = handlebars.compile($source),
+      template = Handlebars.compile($source),
       context;
+      
+  if($target.html()){
+    $target.html('');
+  }
 
+  // loop through products array, do stuff on each product
   products.forEach(function(product){
     var productHTML = $(template(product));
+    // providing context to the named variables in the template
      context = {
         'itemImageUrl': product.Images[0].url_570xN,
         'itemTitle': product.title,
         'productSeller': product.Shop.shop_name,
         'productCost': product.price,
-        'currencyCode' : currencySymbol(product.currency_code)
+        'currencyCode' : currencySymbol(product.currency_code),
+        'url' : product.url
       };
 
     $target.append(template(context));
@@ -54,7 +76,7 @@ fetchJSONP(url, function(data) {
 // DEMO CODE FROM CLASS
 
 // var source = $('#photo-album').html();
-// var template = handlebars.compile(source);
+// var template = Handlebars.compile(source);
 //
 // console.log(template);
 //

@@ -22,10 +22,10 @@
             </div>
 
             <div id="search" class="header-item-height">
-              <form action="#">
+              <form id="search-query" action="">
                 <div class="search-container">
                   <div class="search-field-wrapper">
-                    <input type="text" placeholder="What are you looking for?">
+                    <input id="search-term" type="text" placeholder="What are you looking for?">
                   </div>
                   <div class="search-field-wrapper">
                     <input type="submit" name="search" value="Search">
@@ -77,7 +77,7 @@
       <div class="container">
         <div class="row">
 
-          <aside class="col-md-2 hidden-md">
+          <aside class="col-md-2 hidden-md hidden-sm hidden-xs">
             <h5>Show Results For:</h5>
             <div class="panel">
               <h5>All Categories</h5>
@@ -170,37 +170,41 @@
           <div class="col-md-10">
             <div class="row">
               <div class="col-xs-12">
-                <h4>Top Categories for &lt;search term&gt;</h4>
+                <h4 id="search-result-info"></h4>
               </div>
             </div>
             <div class="row">
               <div id="products-container" class="products-container">
-                <!-- template city -->
-                <script  id="product-card-template" type="text/x-handlebars-template">
 
-                  <div class="col-sm-3">
 
-                    <a href="#" class="product-card">
 
-                      <div class="card-body">
-                        <div class="product-img" style="background-image: url('{{itemImageUrl}}')">
-                          <!-- <img src="{{itemImageUrl}}" alt="{{itemTitle}}"> -->
-                        </div>
-                        <div class="product-info">
-                          <h6>{{itemTitle}}</h6>
-                          <span class="product-seller">{{productSeller}}</span>
-                          <span class="product-cost">{{currencyCode}}{{productCost}}</span>
-                        </div>
-                      </div>
-
-                    </a>
-
-                  </div>
-
-                </script >
-                <!-- /template city -->
               </div> <!-- end .products-container -->
+              <!-- ############## -->
+              <!-- template city -->
+               <script  id="product-card-template" type="text/x-handlebars-template">
 
+                 <div class="col-sm-3">
+
+                   <a href="{{url}}" class="product-card">
+
+                     <div class="card-body">
+                       <div class="product-img" style="background-image: url('{{itemImageUrl}}')">
+                         <!-- <img src="{{itemImageUrl}}" alt="{{itemTitle}}"> -->
+                       </div>
+                       <div class="product-info">
+                         <h6>{{itemTitle}}</h6>
+                         <span class="product-seller">{{productSeller}}</span>
+                         <span class="product-cost">{{currencyCode}}{{productCost}}</span>
+                       </div>
+                     </div>
+
+                   </a>
+
+                 </div>
+
+               </script >
+               <!-- /template city -->
+               <!-- ############## -->
             </div> <!-- end row -->
           </div> <!-- end col-md-10 -->
 
@@ -211,7 +215,7 @@
 
     <footer>
       <div class="row">
-        <div class="col-md-2 col-md-offset-2">
+        <div class="col-sm-2 col-md-offset-2">
           <h5>Turn your passion into a business</h5>
 
           <button>Open a shop</button>
@@ -226,7 +230,7 @@
           </ul>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-sm-2">
           <h5>Join the community</h5>
           <ul>
             <li><a href="#">Teams</a></li>
@@ -236,7 +240,7 @@
             <li><a href="#">Etsy Local</a></li>
           </ul>
         </div>
-        <div class="col-md-2">
+        <div class="col-sm-2">
           <h5>Discover and shop</h5>
           <ul>
             <li><a href="#">Gift cards</a></li>
@@ -248,7 +252,7 @@
             <li><a href="#">Editors’ Picks</a></li>
           </ul>
         </div>
-        <div class="col-md-2">
+        <div class="col-sm-2">
           <h5>Get to know us</h5>
           <ul>
             <li><a href="#">About</a></li>
@@ -259,7 +263,7 @@
             <li><a href="#">Investors</a></li>
           </ul>
         </div>
-        <div class="col-md-2">
+        <div class="col-sm-2">
           <h5>Follow Etsy</h5>
           <ul>
             <li><a href="#">Facebook</a></li>
