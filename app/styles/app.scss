@@ -23,7 +23,8 @@ ul {
 }
 
 header,
-#main-nav {
+#main-nav,
+#main-content {
   border-bottom: 1px solid #E1E3DF;
 }
 
@@ -115,13 +116,6 @@ header,
       width: 100%;
     }
   }
-  i {
-    text-align: center;
-    margin-top: -10px;
-    font-size: 20px;
-    display: block;
-    color: #252525
-  }
   .sign-in {
     border: 1px solid lightblue;
     border-radius: 3px;
@@ -133,11 +127,21 @@ header,
     }
   }
   .cart{
-    
+    a {
+      color: rgba(0,0,0, 8);
+    }
+    i {
+      text-align: center;
+      margin-top: -10px;
+      font-size: 20px;
+      display: block;
+    }
     &:hover a {
       text-decoration: none;
+      color: rgb(0,0,0);
     }
   }
+
 }
 
 #main-nav {
@@ -164,7 +168,7 @@ header,
 }
 
 #main-content {
-  background-color: #F5F5F1;
+  background-color: $mainBg;
   padding: 20px 0;
 }
 
@@ -220,9 +224,32 @@ header,
   .product-info {
     padding: 10px;
   }
+  .product-seller {
+    color: #777777;
+  }
   .product-cost {
     float: right;
     color: #78C042;
+  }
+}
+
+footer {
+  background-color: $mainBg;
+  padding: 20px 0 30px;
+  a {
+    display: block;
+    color: #131313;
+    padding: 5px 0;
+    &:hover {
+      color: #131313
+    }
+  }
+  button {
+    background-color: $etsyBlue;
+    border-radius: 3px;
+    border: 1px solid darken($etsyBlue, 8%);
+    color: white;
+    margin-bottom: 10px;
   }
 }
 
