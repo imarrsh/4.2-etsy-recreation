@@ -8,26 +8,48 @@ var url = 'https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbt
 
 $('#search-query').on('submit', function(e){
   e.preventDefault();
-  var searchTerm = $('#search-term').val();
+  var searchTerm = $('#search-term').val().replace(' ', '+');
   var newUrl = 'https://api.etsy.com/v2/listings/active.js?api_key=cdwxq4soa7q4zuavbtynj8wx&keywords=';
       newUrl += searchTerm;
       newUrl += '&includes=Images,Shop';
 
   fetchJSONP(newUrl, function(data) {
-    run(data);
+    run(data, searchTerm);
   });
 
 });
 
+function displayTaxonomyPath(products) {
+  var source = $('#taxonomies').html(),
+      $target = $('#taxonomy_paths'),
+      template = Handlebars.compile(source);
 
-function displayProducts(products){
+  if($target.html()) {
+    $target.html('');
+  }
+
+  var taxonomies = products.map(function(product){
+    return product.taxonomy_path;
+  });
+  var uniques = _.union(_.flatten(taxonomies));
+
+  uniques.forEach(function(item){
+    var context = { "taxonomy_path" : item };
+    $target.append(template(context));
+    // console.log(context);
+  });
+}
+
+
+function displayProducts(products, searchTerm){
   // get html targets, set up template source and compile
   var $target = $('#products-container'),
       $productImgs = $('.product-img'),
+      $searchResult = $('#search-result-info'),
       $source = $('#product-card-template').html(),
       template = Handlebars.compile($source),
       context;
-      
+
   if($target.html()){
     $target.html('');
   }
@@ -44,7 +66,7 @@ function displayProducts(products){
         'currencyCode' : currencySymbol(product.currency_code),
         'url' : product.url
       };
-
+    $searchResult.text('Search results for ' + searchTerm);
     $target.append(template(context));
 
   });
@@ -61,14 +83,16 @@ function currencySymbol(code){
   }
 }
 
-function run(data){
+function run(data, searchTerm){
   var products = data.results;
-  displayProducts(products);
+  displayProducts(products, searchTerm);
+  displayTaxonomyPath(products);
 }
 
 
 fetchJSONP(url, function(data) {
-  run(data);
+  var searchTerm = 'yarn'; // initial search term
+  run(data, searchTerm);
 });
 
 
